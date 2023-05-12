@@ -1,0 +1,1 @@
+aws ec2 run-instances --image-id ami-02eb7a4783e7e9317 --count 1 --instance-type t2.micro --key-name subashlinux --security-group-ids  sg-024334fef5f082d97 --subnet-id subnet-0fee5501a052f1979 --region ap-south-1 --name jenkins_started
