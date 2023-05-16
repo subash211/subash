@@ -16,11 +16,6 @@ pipeline {
                 sh 'terraform init'
             }
         }
-         stage('terraform add') {
-            steps{
-                sh 'terraform apply -var-file=secrets.tfvars:'
-            }
-        }
         stage('terraform apply') {
             steps{
                 sh 'terraform apply --auto-approve'
