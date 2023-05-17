@@ -5,7 +5,7 @@ pipeline
     stages{
         stage('Git Checkout'){
             steps{
-                git 'https://github.com/subash211/subash.git'
+                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/subash211/subash.git']])
             }
         }
         stage("set env variabl"){
