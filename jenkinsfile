@@ -2,14 +2,10 @@ pipeline
     agent {
         label 'default'
     }
-    tools {
-        terraform 'terraform-11'
-    }
-    
     stages{
         stage('Git Checkout'){
             steps{
-                git 'https://github.com/01010101Basics/terraform-project.git'
+                git 'https://github.com/subash211/subash.git'
             }
         }
         stage("set env variabl"){
