@@ -1,21 +1,14 @@
 pipeline
     agent {
-        label 'default'
+        label 'EC2'
     }
+	tools{
+	terraform 'Terraform'
+}
     stages{
         stage('Git Checkout'){
             steps{
                 checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/subash211/subash.git']])
-            }
-        }
-        stage("set env variabl"){
-            steps{
-                sh 'export AWS_PROFILE=subash'
-            }
-        }
-        stage('Get Directory') {
-            steps{
-                println(WORKSPACE)
             }
         }
         stage('Terraform init'){
@@ -25,14 +18,7 @@ pipeline
         }
         stage('Terraform Apply'){
             steps{
-                withCredentials([[
-                    $class: 'AmazonWebServicesCredentialsBinding',
-                    credentialsId: "subash",
-                    accessKeyVariable: 'AWS_ACCESS_KEY_ID',
-                    secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
                 sh 'terraform apply --auto-approve'
-                }
             }
         }
     }
-}
