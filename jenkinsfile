@@ -9,6 +9,11 @@ pipeline{
                 checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/subash211/subash.git']])
             }
         }
+	stage('present working directory'){
+            steps{
+                sh 'pwd | cd terraform/'
+            }
+        }
         stage('Terraform init'){
             steps{
                 sh 'terraform init'
