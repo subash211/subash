@@ -11,7 +11,7 @@ pipeline{
         }
 	stage('present working directory'){
             steps{
-                sh 'pwd | cd terraform/'
+                sh 'pwd | ls -lrt'
             }
         }
         stage('Terraform init'){
