@@ -1,7 +1,5 @@
-pipeline
-    agent {
-        label 'EC2'
-    }
+pipeline{
+    agent any
 	tools{
 	terraform 'Terraform'
 }
@@ -22,3 +20,4 @@ pipeline
             }
         }
     }
+}
