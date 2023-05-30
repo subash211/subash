@@ -1,26 +1,26 @@
-pipeline{
+pipeline {
     agent any
-	tools{
-	terraform 'terraform'
-}
-    stages{
-        stage('Git Checkout'){
-            steps{
-                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/subash211/subash.git']])
+    tools {
+        terraform 'terraform'
+    }
+    stages {
+        stage('Git Checkout') {
+            steps {
+                git branch: [[name: '*/master']], url: 'https://github.com/subash211/subash.git'
             }
         }
-	stage('present working directory'){
-            steps{
+        stage('Present Working Directory') {
+            steps {
                 sh 'pwd | ls -lrt'
             }
         }
-        stage('Terraform init'){
-            steps{
+        stage('Terraform Init') {
+            steps {
                 sh 'terraform init'
             }
         }
-        stage('Terraform Apply'){
-            steps{
+        stage('Terraform Apply') {
+            steps {
                 sh 'sudo terraform apply --auto-approve'
             }
         }
