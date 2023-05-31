@@ -14,9 +14,14 @@ pipeline {
                 sh 'pwd | ls -lrt'
             }
         }
-        stage('Terraform Init') {
+        stage('Terraform plan') {
             steps {
-                sh 'terraform init'
+                sh 'sudo terraform plan'
+            }
+        }
+        stage('Terraform validate') {
+            steps {
+                sh 'sudo terraform validate'
             }
         }
         stage('Terraform Apply') {
