@@ -8,8 +8,6 @@ terraform {
 }
 provider "aws" {
     region = "ap-south-1" 
-    access_key = "AKIA6G4XBRBLHCKCROCW"
-    secret_key = "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"
 }
 
 resource "aws_instance" "subash" {
